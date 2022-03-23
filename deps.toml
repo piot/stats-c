@@ -1,0 +1,9 @@
+depsversion = "0.0.0"
+
+name = "piot/stats-c"
+version = "0.0.0"
+
+[[dependencies]]
+name = 'piot/clog'
+version = "*"
+
