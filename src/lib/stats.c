@@ -53,7 +53,7 @@ void statsIntAdd(StatsInt* self, int v)
 
 void statsIntDebug(const StatsInt* self, const char* debug, const char* unit)
 {
-    CLOG_OUTPUT_STDERR("stats: %s: %d %s (min:%d, max:%d, count:%zu)", debug, self->avg, unit, self->min, self->max,
+    CLOG_OUTPUT_STDERR("%s: %d %s (min:%d, max:%d, count:%zu)", debug, self->avg, unit, self->min, self->max,
                  self->count);
 }
 
