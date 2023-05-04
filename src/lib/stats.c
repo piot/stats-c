@@ -10,13 +10,14 @@
 void statsIntInit(StatsInt* self, size_t threshold)
 {
     self->sum = 0;
-    self->count = 0;
+    self->count = 0U;
     self->max = INT_MIN;
     self->min = INT_MAX;
     self->threshold = threshold;
     self->maxAck = INT_MIN;
     self->minAck = INT_MAX;
     self->avg = 0;
+    self->avgIsSet = false;
 }
 
 int statsIntMean(const StatsInt* self)
@@ -46,7 +47,8 @@ void statsIntAdd(StatsInt* self, int v)
         self->max = self->maxAck;
         self->maxAck = INT_MIN;
         self->minAck = INT_MAX;
-        self->count = 0;
+        self->count = 0U;
+        self->avgIsSet = true;
         self->sum = 0;
     }
 }
@@ -63,6 +65,7 @@ void statsIntPerSecondInit(StatsIntPerSecond* self, MonotonicTimeMs now, Monoton
     self->nextTime = now + periodMs;
     self->sum = 0;
     self->avg = 0;
+    self->avgIsSet = false;
     self->periodMs = periodMs;
     self->minAck = INT_MAX;
     self->maxAck = INT_MIN;
@@ -90,6 +93,7 @@ int statsIntPerSecondUpdate(StatsIntPerSecond* self, MonotonicTimeMs now)
 
     if (delta > self->periodMs * 3) {
         self->avg = v;
+        self->avgIsSet = true;
         self->min = self->minAck;
         self->max = self->maxAck;
 

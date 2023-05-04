@@ -6,6 +6,7 @@
 #define PIOT_STATS_H
 
 #include <stddef.h>
+#include <stdbool.h>
 
 typedef struct StatsInt {
     int sum;
@@ -16,6 +17,7 @@ typedef struct StatsInt {
     int avg;
     int maxAck;
     int minAck;
+    bool avgIsSet;
 
     size_t threshold;
 } StatsInt;

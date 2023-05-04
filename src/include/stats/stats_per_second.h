@@ -18,6 +18,7 @@ typedef struct StatsIntPerSecond {
     int max;
 
     int avg;
+    bool avgIsSet;
 
     size_t debugCount;
     MonotonicTimeMs lastStatsAt;
