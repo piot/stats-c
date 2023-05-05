@@ -117,7 +117,7 @@ int statsIntPerSecondUpdate(StatsIntPerSecond* self, MonotonicTimeMs now)
 
 void statsIntPerSecondDebugOutput(StatsIntPerSecond* self, const char* debug, const char* unit)
 {
-    CLOG_VERBOSE("stats: %s: %d / %d / %d %s", debug, self->min, self->avg, self->max, unit);
+    CLOG_OUTPUT("stats: %s: %d / %d / %d %s", debug, self->min, self->avg, self->max, unit);
 }
 
 void statsIntPerSecondUpdateDebug(StatsIntPerSecond* self, MonotonicTimeMs now, const char* debug, const char* unit)

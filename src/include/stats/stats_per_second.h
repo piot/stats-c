@@ -7,6 +7,7 @@
 
 #include <monotonic-time/monotonic_time.h>
 #include <stddef.h>
+#include <stdbool.h>
 
 typedef struct StatsIntPerSecond {
     int sum;
