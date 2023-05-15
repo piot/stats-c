@@ -6,8 +6,8 @@
 #define STATS_PER_SECOND_H
 
 #include <monotonic-time/monotonic_time.h>
-#include <stddef.h>
 #include <stdbool.h>
+#include <stddef.h>
 
 typedef struct StatsIntPerSecond {
     int sum;
@@ -33,4 +33,4 @@ int statsIntPerSecondUpdate(StatsIntPerSecond* self, MonotonicTimeMs now);
 void statsIntPerSecondUpdateDebug(StatsIntPerSecond* self, MonotonicTimeMs now, const char* debug, const char* unit);
 void statsIntPerSecondDebugOutput(StatsIntPerSecond* self, const char* debug, const char* unit);
 
-#endif // TURMOIL_DEPS_STATS_C_SRC_INCLUDE_STATS_STATS_PER_SECOND_H
+#endif

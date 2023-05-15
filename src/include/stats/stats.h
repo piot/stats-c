@@ -5,8 +5,8 @@
 #ifndef PIOT_STATS_H
 #define PIOT_STATS_H
 
-#include <stddef.h>
 #include <stdbool.h>
+#include <stddef.h>
 
 typedef struct StatsInt {
     int sum;
@@ -27,4 +27,4 @@ void statsIntAdd(StatsInt* self, int v);
 int statsIntMean(const StatsInt* self);
 void statsIntDebug(const StatsInt* self, const char* debug, const char* unit);
 
-#endif // PIOT_STATS_H
+#endif
