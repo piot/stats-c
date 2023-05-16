@@ -9,6 +9,8 @@
 #include <stdbool.h>
 #include <stddef.h>
 
+struct Clog;
+
 typedef struct StatsIntPerSecond {
     int sum;
 
@@ -30,7 +32,8 @@ typedef struct StatsIntPerSecond {
 void statsIntPerSecondInit(StatsIntPerSecond* self, MonotonicTimeMs now, MonotonicTimeMs periodMs);
 void statsIntPerSecondAdd(StatsIntPerSecond* self, int v);
 int statsIntPerSecondUpdate(StatsIntPerSecond* self, MonotonicTimeMs now);
-void statsIntPerSecondUpdateDebug(StatsIntPerSecond* self, MonotonicTimeMs now, const char* debug, const char* unit);
-void statsIntPerSecondDebugOutput(StatsIntPerSecond* self, const char* debug, const char* unit);
+void statsIntPerSecondUpdateDebug(StatsIntPerSecond* self, const struct Clog* log, MonotonicTimeMs now,
+                                  const char* debug, const char* unit);
+void statsIntPerSecondDebugOutput(StatsIntPerSecond* self, const struct Clog* log, const char* debug, const char* unit);
 
 #endif

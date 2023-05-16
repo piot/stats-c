@@ -5,7 +5,6 @@
 #include <clog/clog.h>
 #include <limits.h>
 #include <stats/stats.h>
-#include <stats/stats_per_second.h>
 
 void statsIntInit(StatsInt* self, size_t threshold)
 {
@@ -54,8 +53,8 @@ void statsIntAdd(StatsInt* self, int v)
     }
 }
 
-void statsIntDebug(const StatsInt* self, const char* debug, const char* unit)
+void statsIntDebug(const StatsInt* self, const Clog* log, const char* debug, const char* unit)
 {
-    CLOG_OUTPUT_STDERR("%s: %d %s (min:%d, max:%d, count:%zu)", debug, self->avg, unit, self->min, self->max,
-                       self->count);
+    CLOG_C_DEBUG(log, "%s: %d %s (min:%d, max:%d, count:%zu)", debug, self->avg, unit, self->min, self->max,
+                 self->count);
 }

@@ -7,6 +7,7 @@
 
 #include <stdbool.h>
 #include <stddef.h>
+struct Clog;
 
 typedef struct StatsInt {
     int sum;
@@ -25,6 +26,6 @@ typedef struct StatsInt {
 void statsIntInit(StatsInt* self, size_t threshold);
 void statsIntAdd(StatsInt* self, int v);
 int statsIntMean(const StatsInt* self);
-void statsIntDebug(const StatsInt* self, const char* debug, const char* unit);
+void statsIntDebug(const StatsInt* self, const struct Clog* log, const char* debug, const char* unit);
 
 #endif

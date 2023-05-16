@@ -62,17 +62,18 @@ int statsIntPerSecondUpdate(StatsIntPerSecond* self, MonotonicTimeMs now)
     return didSetStats;
 }
 
-void statsIntPerSecondDebugOutput(StatsIntPerSecond* self, const char* debug, const char* unit)
+void statsIntPerSecondDebugOutput(StatsIntPerSecond* self, const Clog* log, const char* debug, const char* unit)
 {
-    CLOG_OUTPUT("stats: %s: %d / %d / %d %s", debug, self->min, self->avg, self->max, unit);
+    CLOG_C_DEBUG(log, "stats: %s: %d / %d / %d %s", debug, self->min, self->avg, self->max, unit);
 }
 
-void statsIntPerSecondUpdateDebug(StatsIntPerSecond* self, MonotonicTimeMs now, const char* debug, const char* unit)
+void statsIntPerSecondUpdateDebug(StatsIntPerSecond* self, const Clog* log, MonotonicTimeMs now, const char* debug,
+                                  const char* unit)
 {
     int didSetStats = statsIntPerSecondUpdate(self, now);
     if (!didSetStats) {
         return;
     }
 
-    statsIntPerSecondDebugOutput(self, debug, unit);
+    statsIntPerSecondDebugOutput(self, log, debug, unit);
 }
