@@ -64,7 +64,11 @@ int statsIntPerSecondUpdate(StatsIntPerSecond* self, MonotonicTimeMs now)
 
 void statsIntPerSecondDebugOutput(StatsIntPerSecond* self, const Clog* log, const char* debug, const char* unit)
 {
-    CLOG_C_DEBUG(log, "stats: %s: %d / %d / %d %s", debug, self->min, self->avg, self->max, unit);
+    (void) self;
+    (void) log;
+    (void) debug;
+    (void) unit;
+    CLOG_C_DEBUG(log, "stats: %s: %d / %d / %d %s", debug, self->min, self->avg, self->max, unit)
 }
 
 void statsIntPerSecondUpdateDebug(StatsIntPerSecond* self, const Clog* log, MonotonicTimeMs now, const char* debug,

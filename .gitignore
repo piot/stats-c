@@ -1,0 +1,15 @@
+deps/
+deps.clean*/
+.idea/
+.cmake/
+cmake-build-*/
+.ninja*
+*.ninja
+Testing/
+.vscode/
+CMakeFiles
+Makefile
+cmake_install.cmake
+libordered-datagram.a
+CMakeCache.txt
+*.a
