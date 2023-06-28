@@ -6,6 +6,9 @@
 #include <limits.h>
 #include <stats/stats.h>
 
+/// Initializes a int stat
+/// @param self stats int
+/// @param threshold number of samples until calculating an average
 void statsIntInit(StatsInt* self, size_t threshold)
 {
     self->sum = 0;
@@ -19,6 +22,9 @@ void statsIntInit(StatsInt* self, size_t threshold)
     self->avgIsSet = false;
 }
 
+/// returns the mean value
+/// @param self stats int
+/// @return the mean value
 int statsIntMean(const StatsInt* self)
 {
     if (self->count < 10) {
@@ -28,6 +34,9 @@ int statsIntMean(const StatsInt* self)
     return self->sum / (int) self->count;
 }
 
+/// Adds an integer sample
+/// @param self stats int
+/// @param v value to add
 void statsIntAdd(StatsInt* self, int v)
 {
     self->sum += v;
@@ -53,8 +62,18 @@ void statsIntAdd(StatsInt* self, int v)
     }
 }
 
+/// Logs debug information
+/// @param self stats int
+/// @param log target log
+/// @param debug description string
+/// @param unit unit for the integer
 void statsIntDebug(const StatsInt* self, const Clog* log, const char* debug, const char* unit)
 {
+    (void) self;
+    (void) log;
+    (void) debug;
+    (void) unit;
+
     CLOG_C_DEBUG(log, "%s: %d %s (min:%d, max:%d, count:%zu)", debug, self->avg, unit, self->min, self->max,
                  self->count);
 }

@@ -4,6 +4,6 @@ name = "piot/stats-c"
 version = "0.0.0"
 
 [[dependencies]]
-name = 'piot/clog'
+name = 'piot/monotonic-time-c'
 version = "*"
 
