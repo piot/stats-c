@@ -75,5 +75,5 @@ void statsIntDebug(const StatsInt* self, const Clog* log, const char* debug, con
     (void) unit;
 
     CLOG_C_DEBUG(log, "%s: %d %s (min:%d, max:%d, count:%zu)", debug, self->avg, unit, self->min, self->max,
-                 self->count);
+                 self->count)
 }
