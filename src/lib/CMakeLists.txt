@@ -42,7 +42,7 @@ endif()
 file(GLOB lib_src FOLLOW_SYMLINKS "./*.c")
 
 
-add_library(stats ${lib_src})
+add_library(stats STATIC ${lib_src})
 
 
 if(APPLE)
@@ -75,9 +75,7 @@ elseif(OS_MACOS)
   unixlike()
 endif()
 
-
 target_include_directories(stats PUBLIC ../include)
-
 
 if(COMPILER_CLANG)
   target_compile_options(
@@ -89,6 +87,7 @@ if(COMPILER_CLANG)
                                              # even if std=c99
             -Wno-unsafe-buffer-usage # unclear why it fails on clang-16
             -Wno-unknown-warning-option # support newer clang versions, e.g. clang-16
+            -Wno-disabled-macro-expansion
             ${sanitizers})
 elseif(COMPILER_GCC)
 target_compile_options(
@@ -126,7 +125,9 @@ else()
   target_compile_options(stats PRIVATE -Wall)
 endif()
 
+
 target_link_libraries(stats PUBLIC monotonic-time)
+
 
 if(useSanitizers)
   target_link_libraries(stats PRIVATE ${sanitizers})
