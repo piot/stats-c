@@ -13,3 +13,4 @@ cmake_install.cmake
 libordered-datagram.a
 CMakeCache.txt
 *.a
+.DS_Store
